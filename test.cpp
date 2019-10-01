@@ -5,6 +5,10 @@
 using std::cout;
 
 int main() {
+    out_str str("test");
+    str *= 100;
+    for (const auto &i : str) cout << i << ",";
+    /*
     {
         out_str str(10, 'x');
         str.push_back('z');
@@ -34,4 +38,5 @@ int main() {
     cout << (qwe == "abcde") << ", " << (qwe == "abc") << ", " << (qwe != "abcde") << ", " << (qwe != "abc") << "\n";
     qwe *= 50;
     cout << qwe.c_str() << ", " << qwe.size() << "\n";
+    */
 }

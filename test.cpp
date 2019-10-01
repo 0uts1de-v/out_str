@@ -32,4 +32,6 @@ int main() {
 
     out_str qwe("abcde");
     cout << (qwe == "abcde") << ", " << (qwe == "abc") << ", " << (qwe != "abcde") << ", " << (qwe != "abc") << "\n";
+    qwe *= 50;
+    cout << qwe.c_str() << ", " << qwe.size() << "\n";
 }

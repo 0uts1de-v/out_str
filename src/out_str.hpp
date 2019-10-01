@@ -32,6 +32,8 @@ class out_str {
     out_str operator+(const out_str &);
     out_str &operator+=(const char *);
     out_str &operator+=(const out_str &);
+    out_str operator*(size_t);
+    out_str &operator*=(size_t);
     const bool operator==(const char *);
     const bool operator==(const out_str &);
     const bool operator!=(const char *);
@@ -149,8 +151,23 @@ out_str &out_str::operator+=(const out_str &str) {
         delete[] m_data;
         m_data = new char[capacity() + 1];
         std::memcpy(m_data, old_data, old_size);
-    }
+    }   
     std::memcpy(m_data + old_size, str.data(), str.size() + 1);
+    return *this;
+}
+
+out_str out_str::operator*(size_t n) {
+    auto ret = *this;
+    for (size_t i = 1; i < n; ++i)
+        ret += data();
+    return ret;
+}
+
+out_str &out_str::operator*=(size_t n) {
+    out_str tmp(*this);
+    for (size_t i = 1; i < n; ++i)
+        tmp += data();
+    *this = tmp;
     return *this;
 }
 

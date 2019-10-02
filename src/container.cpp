@@ -145,20 +145,8 @@ const char *out_str::c_str() const {
     return m_data;
 }
 
-size_t out_str::capacity() const {
-    return m_capacity;
-}
-
-size_t out_str::size() const {
-    return m_size;
-}
-
 const char *out_str::data() const {
     return m_data;
-}
-
-bool out_str::empty() const {
-    return size() == 0;
 }
 
 void out_str::erase(size_t pos = 0, size_t n = npos) {

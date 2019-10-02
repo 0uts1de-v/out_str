@@ -43,10 +43,10 @@ class out_str {
 
     // member funcs
     const char *c_str() const;
-    size_t capacity() const;
-    size_t size() const;
+    constexpr size_t capacity() const { return m_capacity; }
+    constexpr size_t size() const { return m_size; }
     const char *data() const;
-    bool empty() const;
+    constexpr bool empty() const { return size() == 0; }
 
     void erase(size_t, size_t);
     void pop_back();

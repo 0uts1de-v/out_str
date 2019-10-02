@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <random>
+#include <string>
 
 #include "src/out_str.hpp"
 
@@ -12,6 +13,9 @@ int main() {
     str += "d";
     cout << str.c_str() << ", " << str.size() << ", " << str.capacity() << "\n";
     str.shrink_to_fit();
+    cout << str.c_str() << ", " << str.size() << ", " << str.capacity() << "\n";
+    std::string tmp; std::cin >> tmp;
+    str = tmp.c_str();
     cout << str.c_str() << ", " << str.size() << ", " << str.capacity() << "\n";
 
     /*

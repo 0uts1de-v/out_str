@@ -1,6 +1,3 @@
-#ifndef OUTSIDE_STRING
-#define OUTSIDE_STRING
-
 #include <algorithm>
 #include <cstdlib>
 #include <cstring>
@@ -194,5 +191,3 @@ out_str::iterator out_str::begin() {
 out_str::iterator out_str::end() {
     return iterator(this, size());
 }
-
-#endif

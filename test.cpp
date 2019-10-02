@@ -1,12 +1,17 @@
 #include <iostream>
+#include <algorithm>
+#include <random>
 
 #include "src/out_str.hpp"
 
 using std::cout;
 
 int main() {
+    std::random_device rd;
+    std::mt19937 mt(rd());
     out_str str("test");
-    str *= 100;
+    str *= 10;
+    std::shuffle(str.begin(), str.end(), mt);
     for (const auto &i : str) cout << i << ",";
     /*
     {

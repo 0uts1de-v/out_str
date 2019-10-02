@@ -1,3 +1,8 @@
+#ifndef OUT_STR_HPP
+#define OUT_STR_HPP
+
+#include <iterator>
+
 class out_str_iter;
 
 class out_str {
@@ -65,6 +70,12 @@ class out_str_iter {
     out_str_iter(out_str *, size_t);
 
   public:
+    using difference_type = ptrdiff_t;
+    using value_type = char;
+    using pointer = char *;
+    using reference = char &;
+    using iterator_category = std::random_access_iterator_tag;
+    
     // constructor
     out_str_iter(const out_str_iter &);
 
@@ -72,7 +83,20 @@ class out_str_iter {
     char &operator*();
     out_str_iter &operator++();
     out_str_iter &operator++(int);
+    out_str_iter &operator--();
+    out_str_iter &operator--(int);
+    out_str_iter operator+(size_t);
+    out_str_iter operator-(size_t);
+    ptrdiff_t operator-(const out_str_iter &);
+    out_str_iter &operator+=(size_t);
+    out_str_iter &operator-=(size_t);
+    out_str_iter &operator=(const out_str_iter &);
     bool operator==(const out_str_iter &);
     bool operator!=(const out_str_iter &);
+    bool operator<(const out_str_iter &);
+    bool operator>(const out_str_iter &);
+    bool operator<=(const out_str_iter &);
+    bool operator>=(const out_str_iter &);
 };
 
+#endif

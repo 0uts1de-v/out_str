@@ -7,13 +7,20 @@
 using std::cout;
 
 int main() {
+    out_str str("abc");
+    cout << str.c_str() << ", " << str.size() << ", " << str.capacity() << "\n";
+    str += "d";
+    cout << str.c_str() << ", " << str.size() << ", " << str.capacity() << "\n";
+    str.shrink_to_fit();
+    cout << str.c_str() << ", " << str.size() << ", " << str.capacity() << "\n";
+
+    /*
     std::random_device rd;
     std::mt19937 mt(rd());
-    out_str str("test");
-    str *= 10;
+    out_str str("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
     std::shuffle(str.begin(), str.end(), mt);
     for (const auto &i : str) cout << i << ",";
-    /*
+//----------
     {
         out_str str(10, 'x');
         str.push_back('z');

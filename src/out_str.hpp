@@ -52,6 +52,7 @@ class out_str {
     void pop_back();
     out_str &append(size_t, char);
     void push_back(char);
+    void shrink_to_fit();
 
     // iterator
     iterator begin();

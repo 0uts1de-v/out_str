@@ -183,6 +183,14 @@ void out_str::push_back(char c) {
     append(1, c);
 }
 
+void out_str::shrink_to_fit() {
+    m_capacity = size();
+    out_str tmp(*this);
+    delete[] m_data;
+    m_data = new char[capacity() + 1];
+    std::memcpy(m_data, tmp.data(), size() + 1);
+}
+
 // iterator
 out_str::iterator out_str::begin() {
     return iterator(this, 0);

@@ -43,9 +43,9 @@ class out_str {
 
     // member funcs
     const char *c_str() const;
+    const char *data() const;
     constexpr size_t capacity() const { return m_capacity; }
     constexpr size_t size() const { return m_size; }
-    const char *data() const;
     constexpr bool empty() const { return size() == 0; }
 
     void erase(size_t, size_t);
@@ -76,7 +76,7 @@ class out_str_iter {
     using pointer = char *;
     using reference = char &;
     using iterator_category = std::random_access_iterator_tag;
-    
+
     // constructor
     out_str_iter(const out_str_iter &);
 

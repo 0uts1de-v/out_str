@@ -5,12 +5,12 @@
 // constructor
 out_str_iter::out_str_iter() {
     m_out_str = nullptr;
-    m_index = SIZE_MAX;
+    m_index = 0;
 }
 
 out_str_iter::out_str_iter(out_str *ostr, size_t index) {
     m_out_str = ostr;
-    m_index = (index <= m_out_str->size() ? index : SIZE_MAX);
+    m_index = index;
 }
 
 out_str_iter::out_str_iter(const out_str_iter &iterator) {
@@ -20,8 +20,7 @@ out_str_iter::out_str_iter(const out_str_iter &iterator) {
 
 // operator
 char &out_str_iter::operator*() {
-    static char dummy;
-    return (m_index != SIZE_MAX ? m_out_str->m_data[m_index] : dummy);
+    return m_out_str->m_data[m_index];
 }
 
 out_str_iter &out_str_iter::operator++() {

@@ -8,6 +8,12 @@
 using std::cout;
 
 int main() {
+    out_str str("abcABC123");
+    cout << str.c_str() << ", " << str.size() << ", " << str.capacity() << "\n";
+    cout << str.upper_case().c_str() << ", " << str.upper_case().size() << ", " << str.upper_case().capacity() << "\n";
+    cout << str.lower_case().c_str() << ", " << str.lower_case().size() << ", " << str.lower_case().capacity() << "\n";
+
+    /*
     out_str str("abc");
     cout << str.c_str() << ", " << str.size() << ", " << str.capacity() << "\n";
     str += "d";
@@ -17,6 +23,7 @@ int main() {
     std::string tmp; std::cin >> tmp;
     str = tmp.c_str();
     cout << str.c_str() << ", " << str.size() << ", " << str.capacity() << "\n";
+    */
 
     /*
     std::random_device rd;

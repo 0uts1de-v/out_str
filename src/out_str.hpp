@@ -48,11 +48,14 @@ class out_str {
     constexpr size_t size() const { return m_size; }
     constexpr bool empty() const { return size() == 0; }
 
-    void erase(size_t, size_t);
+    void erase(size_t pos = 0, size_t n = npos);
     void pop_back();
     out_str &append(size_t, char);
     void push_back(char);
     void shrink_to_fit();
+
+    out_str upper_case(size_t pos = 0, size_t n = npos);
+    out_str lower_case(size_t pos = 0, size_t n = npos);
 
     // iterator
     iterator begin();

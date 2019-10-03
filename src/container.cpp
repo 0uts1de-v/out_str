@@ -149,7 +149,7 @@ const char *out_str::data() const {
     return m_data;
 }
 
-void out_str::erase(size_t pos = 0, size_t n = npos) {
+void out_str::erase(size_t pos, size_t n) {
     if (pos > size())
         throw std::out_of_range("out_str");
     auto xlen = std::min(n, size() - pos);
@@ -177,6 +177,32 @@ void out_str::shrink_to_fit() {
     delete[] m_data;
     m_data = new char[capacity() + 1];
     std::memcpy(m_data, tmp.data(), size() + 1);
+}
+
+out_str out_str::upper_case(size_t pos, size_t n) {
+    if (pos > size())
+        throw std::out_of_range("out_str");
+    auto xlen = std::min(n, size() - pos);
+    out_str ret(*this);
+    for (size_t i = 0; i < xlen; ++i) {
+        if (97 <= ret.data()[i + pos] && ret.data()[i + pos] <= 122) {
+            ret.m_data[i + pos] -= 32;
+        }
+    }
+    return ret;
+}
+
+out_str out_str::lower_case(size_t pos, size_t n) {
+    if (pos > size())
+        throw std::out_of_range("out_str");
+    auto xlen = std::min(n, size() - pos);
+    out_str ret(*this);
+    for (size_t i = 0; i < xlen; ++i) {
+        if (65 <= ret.data()[i + pos] && ret.data()[i + pos] <= 90) {
+            ret.m_data[i + pos] += 32;
+        }
+    }
+    return ret;
 }
 
 // iterator

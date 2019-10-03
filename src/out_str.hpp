@@ -24,6 +24,7 @@ class out_str {
     out_str(const size_t, const char);
     out_str(const char *);
     out_str(const out_str &);
+    out_str(const out_str &, size_t, size_t);
 
     // destructor
     ~out_str();
@@ -55,11 +56,12 @@ class out_str {
     out_str &append(size_t, char);
     void push_back(char);
     void shrink_to_fit();
+    out_str substr(size_t pos = 0, size_t n = npos) const;
 
-    out_str upper_case(size_t pos = 0, size_t n = npos);
-    out_str lower_case(size_t pos = 0, size_t n = npos);
-    out_str rot13(size_t pos = 0, size_t n = npos);
-    out_str base64();
+    out_str upper_case(size_t pos = 0, size_t n = npos) const;
+    out_str lower_case(size_t pos = 0, size_t n = npos) const;
+    out_str rot13(size_t pos = 0, size_t n = npos) const;
+    out_str base64() const;
 
     // iterator
     iterator begin();

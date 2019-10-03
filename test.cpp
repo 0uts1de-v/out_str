@@ -9,12 +9,13 @@ using std::cout;
 using outside_string::out_str;
 
 int main() {
-    out_str str("abcABC123xXyYzZ");
+    const out_str str("abcABC123xXyYzZ");
     cout << str.c_str() << ", " << str.size() << ", " << str.capacity() << "\n";
     cout << str.upper_case().c_str() << ", " << str.upper_case().size() << ", " << str.upper_case().capacity() << "\n";
     cout << str.lower_case().c_str() << ", " << str.lower_case().size() << ", " << str.lower_case().capacity() << "\n";
     cout << str.rot13().c_str() << ", " << str.rot13().size() << ", " << str.rot13().capacity() << "\n";
     cout << str.base64().c_str() << ", " << str.base64().size() << ", " << str.base64().capacity() << "\n";
+    cout << str.substr(6, 3).c_str() << ", " << str.substr(6, 3).size() << ", " << str.substr(6, 3).capacity() << "\n";
 
     /*
     out_str str("abc");

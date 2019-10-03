@@ -46,6 +46,23 @@ out_str::out_str(const out_str &str, size_t pos, size_t n) {
     m_data[m_capacity] = '\0';
 }
 
+out_str::out_str(const std::string &str) {
+    m_capacity = str.capacity();
+    m_size = str.size();
+    m_data = new char[m_capacity + 1];
+    std::memcpy(m_data, str.data(), m_size + 1);
+}
+
+out_str::out_str(const std::string &str, size_t pos, size_t n) {
+    if (pos > str.size())
+        throw std::out_of_range("out_str");
+    auto xlen = std::min(n, str.size() - pos);
+    m_capacity = m_size = xlen;
+    m_data = new char[m_capacity + 1];
+    std::memcpy(m_data, str.data() + pos, xlen);
+    m_data[m_capacity] = '\0';
+}
+
 // destructor
 out_str::~out_str() {
     delete[] m_data;

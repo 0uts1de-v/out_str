@@ -2,6 +2,7 @@
 #define OUT_STR_HPP
 
 #include <iterator>
+#include <string>
 
 namespace outside_string {
 
@@ -25,6 +26,8 @@ class out_str {
     out_str(const char *);
     out_str(const out_str &);
     out_str(const out_str &, size_t, size_t);
+    out_str(const std::string &);
+    out_str(const std::string &, size_t, size_t);
 
     // destructor
     ~out_str();

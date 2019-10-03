@@ -4,6 +4,7 @@
 #include <stdexcept>
 
 #include "out_str.hpp"
+#include "aluminium/base64.hpp"
 
 namespace outside_string {
 
@@ -220,6 +221,11 @@ out_str out_str::rot13(size_t pos, size_t n) {
             ret.m_data[i + pos] = (ret.data()[i + pos] - 'A' + 13) % 26 + 'A';
         }
     }
+    return ret;
+}
+
+out_str out_str::base64() {
+    out_str ret(aluminium::base64::base64encode(data()).c_str());
     return ret;
 }
 

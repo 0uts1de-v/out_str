@@ -6,6 +6,7 @@
 #include "src/out_str.hpp"
 
 using std::cout;
+using outside_string::out_str;
 
 int main() {
     out_str str("abcABC123");

@@ -5,6 +5,8 @@
 
 #include "out_str.hpp"
 
+namespace outside_string {
+
 // constructor
 out_str::out_str() {
     m_capacity = m_size = 0;
@@ -229,3 +231,5 @@ out_str::iterator out_str::begin() {
 out_str::iterator out_str::end() {
     return iterator(this, size());
 }
+
+} // namespace outside_string

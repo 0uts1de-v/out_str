@@ -3,6 +3,8 @@
 
 #include <iterator>
 
+namespace outside_string {
+
 class out_str_iter;
 
 class out_str {
@@ -103,5 +105,7 @@ class out_str_iter {
     bool operator<=(const out_str_iter &);
     bool operator>=(const out_str_iter &);
 };
+
+} // namespace outside_string
 
 #endif

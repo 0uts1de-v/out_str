@@ -2,6 +2,8 @@
 
 #include "out_str.hpp"
 
+namespace outside_string {
+
 // constructor
 out_str_iter::out_str_iter() {
     m_out_str = nullptr;
@@ -98,3 +100,5 @@ bool out_str_iter::operator<=(const out_str_iter &iterator) {
 bool out_str_iter::operator>=(const out_str_iter &iterator) {
     return m_index >= iterator.m_index;
 }
+
+} // namespace outside_string

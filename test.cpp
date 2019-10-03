@@ -12,6 +12,7 @@ int main() {
     cout << str.c_str() << ", " << str.size() << ", " << str.capacity() << "\n";
     cout << str.upper_case().c_str() << ", " << str.upper_case().size() << ", " << str.upper_case().capacity() << "\n";
     cout << str.lower_case().c_str() << ", " << str.lower_case().size() << ", " << str.lower_case().capacity() << "\n";
+    cout << str.rot13().c_str() << ", " << str.rot13().size() << ", " << str.rot13().capacity() << "\n";
 
     /*
     out_str str("abc");

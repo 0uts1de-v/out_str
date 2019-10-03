@@ -56,6 +56,7 @@ class out_str {
 
     out_str upper_case(size_t pos = 0, size_t n = npos);
     out_str lower_case(size_t pos = 0, size_t n = npos);
+    out_str rot13(size_t pos = 0, size_t n = npos);
 
     // iterator
     iterator begin();

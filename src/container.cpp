@@ -185,7 +185,7 @@ out_str out_str::upper_case(size_t pos, size_t n) {
     auto xlen = std::min(n, size() - pos);
     out_str ret(*this);
     for (size_t i = 0; i < xlen; ++i) {
-        if (97 <= ret.data()[i + pos] && ret.data()[i + pos] <= 122) {
+        if ('a' <= ret.data()[i + pos] && ret.data()[i + pos] <= 'z') {
             ret.m_data[i + pos] -= 32;
         }
     }
@@ -198,8 +198,24 @@ out_str out_str::lower_case(size_t pos, size_t n) {
     auto xlen = std::min(n, size() - pos);
     out_str ret(*this);
     for (size_t i = 0; i < xlen; ++i) {
-        if (65 <= ret.data()[i + pos] && ret.data()[i + pos] <= 90) {
+        if ('A' <= ret.data()[i + pos] && ret.data()[i + pos] <= 'Z') {
             ret.m_data[i + pos] += 32;
+        }
+    }
+    return ret;
+}
+
+out_str out_str::rot13(size_t pos, size_t n) {
+    if (pos > size())
+        throw std::out_of_range("out_str");
+    auto xlen = std::min(n, size() - pos);
+    out_str ret(*this);
+    for (size_t i = 0; i < xlen; ++i) {
+        if ('a' <= ret.data()[i + pos] && ret.data()[i + pos] <= 'z') {
+            ret.m_data[i + pos] = (ret.data()[i + pos] - 'a' + 13) % 26 + 'a';
+        }
+        if ('A' <= ret.data()[i + pos] && ret.data()[i + pos] <= 'Z') {
+            ret.m_data[i + pos] = (ret.data()[i + pos] - 'A' + 13) % 26 + 'A';
         }
     }
     return ret;

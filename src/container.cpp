@@ -95,6 +95,23 @@ out_str &out_str::operator=(const out_str &str) {
     return *this;
 }
 
+out_str &out_str::operator=(const std::string &str) {
+    m_size = str.size();
+    if (m_capacity < m_size) {
+        m_capacity = m_size;
+        delete[] m_data;
+        m_data = new char[m_capacity + 1];
+    }
+    std::memcpy(m_data, str.data(), m_size + 1);
+    return *this;
+}
+
+out_str out_str::operator+(const char c) {
+    out_str ret(data());
+    ret += c;
+    return ret;
+}
+
 out_str out_str::operator+(const char *str) {
     out_str ret(data());
     ret += str;
@@ -105,6 +122,21 @@ out_str out_str::operator+(const out_str &str) {
     out_str ret(data());
     ret += str.data();
     return ret;
+}
+
+out_str &out_str::operator+=(const char c) {
+    ++m_size;
+    if (capacity() < size()) {
+        out_str old(*this);
+        auto old_data = old.data();
+        m_capacity *= 2;
+        delete[] m_data;
+        m_data = new char[capacity() + 1];
+        std::memcpy(m_data, old_data, size() - 1);
+    }
+    m_data[size() - 1] = c;
+    m_data[size()] = '\0';
+    return *this;
 }
 
 out_str &out_str::operator+=(const char *str) {
@@ -270,10 +302,16 @@ out_str::iterator out_str::end() {
     return iterator(this, size());
 }
 
-// overload for ostream
+// overload for iostream
 std::ostream &operator<<(std::ostream &out, const outside_string::out_str &str) {
     out << str.c_str();
     return out;
+}
+std::istream &operator>>(std::istream &in, outside_string::out_str &str) {
+    std::string tmp;
+    in >> tmp;
+    str = tmp;
+    return in;
 }
 
 } // namespace outside_string

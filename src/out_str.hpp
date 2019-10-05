@@ -1,6 +1,8 @@
 #ifndef OUT_STR_HPP
 #define OUT_STR_HPP
 
+#include <cctype>
+#include <istream>
 #include <iterator>
 #include <ostream>
 #include <string>
@@ -37,8 +39,11 @@ class out_str {
     char &operator[](const size_t);
     out_str &operator=(const char *);
     out_str &operator=(const out_str &);
+    out_str &operator=(const std::string &);
+    out_str operator+(const char);
     out_str operator+(const char *);
     out_str operator+(const out_str &);
+    out_str &operator+=(const char);
     out_str &operator+=(const char *);
     out_str &operator+=(const out_str &);
     out_str operator*(size_t);
@@ -113,8 +118,9 @@ class out_str_iter {
     bool operator>=(const out_str_iter &);
 };
 
-// overload for ostream
+// overload for iostream
 std::ostream &operator<<(std::ostream &, const outside_string::out_str &);
+std::istream &operator>>(std::istream &, outside_string::out_str &);
 
 } // namespace outside_string
 

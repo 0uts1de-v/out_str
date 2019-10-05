@@ -2,6 +2,7 @@
 #define OUT_STR_HPP
 
 #include <iterator>
+#include <ostream>
 #include <string>
 
 namespace outside_string {
@@ -111,6 +112,9 @@ class out_str_iter {
     bool operator<=(const out_str_iter &);
     bool operator>=(const out_str_iter &);
 };
+
+// overload for ostream
+std::ostream &operator<<(std::ostream &, const outside_string::out_str &);
 
 } // namespace outside_string
 

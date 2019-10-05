@@ -11,7 +11,7 @@ using outside_string::out_str;
 int main() {
     std::string str("abcde");
     out_str ostr(str);
-    cout << ostr.c_str() << ", " << ostr.size() << ", " << ostr.capacity() << "\n";
+    cout << ostr << ", " << ostr.size() << ", " << ostr.capacity() << "\n";
     /*
     const out_str str("abcABC123xXyYzZ");
     cout << str.c_str() << ", " << str.size() << ", " << str.capacity() << "\n";

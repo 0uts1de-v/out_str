@@ -3,8 +3,8 @@
 #include <cstring>
 #include <stdexcept>
 
-#include "out_str.hpp"
 #include "aluminium/base64.hpp"
+#include "out_str.hpp"
 
 namespace outside_string {
 
@@ -268,6 +268,12 @@ out_str::iterator out_str::begin() {
 
 out_str::iterator out_str::end() {
     return iterator(this, size());
+}
+
+// overload for ostream
+std::ostream &operator<<(std::ostream &out, const outside_string::out_str &str) {
+    out << str.c_str();
+    return out;
 }
 
 } // namespace outside_string

@@ -71,7 +71,8 @@ class out_str {
     out_str upper_case(size_t pos = 0, size_t n = npos) const;
     out_str lower_case(size_t pos = 0, size_t n = npos) const;
     out_str rot13(size_t pos = 0, size_t n = npos) const;
-    out_str base64() const;
+    out_str base64_encode(bool urlSafe = false) const;
+    out_str base64_decode(bool urlSafe = false) const;
 
     // iterator
     iterator begin();

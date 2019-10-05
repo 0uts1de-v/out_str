@@ -32,9 +32,9 @@ std::string base64encode(const char *plain_cstr) {
     return encoded;
 }
 
-std::string base64encode_url(std::string plain) {
+std::string base64encode_url(const char *plain_cstr) {
     const char table[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
-    std::string bitstr, encoded;
+    std::string plain(plain_cstr), bitstr, encoded;
 
     for (unsigned int i = 0; i < plain.size(); ++i) {
         bitstr += std::bitset<8>(plain[i]).to_string();
@@ -51,9 +51,9 @@ std::string base64encode_url(std::string plain) {
     return encoded;
 }
 
-std::string base64decode(std::string code) {
+std::string base64decode(const char *code_cstr) {
     auto table = [](int x) { return (65 <= x && x <= 90) ? x - 65 : (97 <= x && x <= 122) ? x - 71 : (48 <= x && x <= 57) ? x + 4 : (x == 43) ? 62 : 63; };
-    std::string bitstr, decoded;
+    std::string code(code_cstr), bitstr, decoded;
 
     //code.erase(std::remove_if(code.begin(), code.end(), [](char c){return c == '=';}), code.end());
     aluminium::util::erase_if(code, [](char c) { return c == '='; });
@@ -71,9 +71,9 @@ std::string base64decode(std::string code) {
     return decoded;
 }
 
-std::string base64decode_url(std::string code) {
+std::string base64decode_url(const char *code_cstr) {
     auto table = [](int x) { return (65 <= x && x <= 90) ? x - 65 : (97 <= x && x <= 122) ? x - 71 : (48 <= x && x <= 57) ? x + 4 : (x == 45) ? 62 : 63; };
-    std::string bitstr, decoded;
+    std::string code(code_cstr), bitstr, decoded;
 
     for (const auto &i : code) {
         bitstr += std::bitset<6>(table(i)).to_string();

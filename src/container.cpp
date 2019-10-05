@@ -292,8 +292,19 @@ out_str out_str::rot13(size_t pos, size_t n) const {
     return ret;
 }
 
-out_str out_str::base64() const {
-    out_str ret(aluminium::base64::base64encode(data()).c_str());
+out_str out_str::base64_encode(bool urlSafe) const {
+    out_str ret(
+        (urlSafe)
+            ? aluminium::base64::base64encode_url(data())
+            : aluminium::base64::base64encode(data()));
+    return ret;
+}
+
+out_str out_str::base64_decode(bool urlSafe) const {
+    out_str ret(
+        (urlSafe)
+            ? aluminium::base64::base64decode_url(data())
+            : aluminium::base64::base64decode(data()));
     return ret;
 }
 

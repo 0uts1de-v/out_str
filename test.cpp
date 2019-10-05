@@ -10,9 +10,10 @@ using std::cin;
 using outside_string::out_str;
 
 int main() {
+    /*
     const out_str str("abcd");
     cout << str[0];
-
+    */
     /*
     out_str str;
     cin >> str;
@@ -25,15 +26,17 @@ int main() {
     out_str ostr(str);
     cout << ostr << ", " << ostr.size() << ", " << ostr.capacity() << "\n";
     */
-    /*
-    const out_str str("abcABC123xXyYzZ");
+    
+    out_str str;
+    cin >> str;
     cout << str << ", " << str.size() << ", " << str.capacity() << "\n";
     cout << str.upper_case() << ", " << str.upper_case().size() << ", " << str.upper_case().capacity() << "\n";
     cout << str.lower_case() << ", " << str.lower_case().size() << ", " << str.lower_case().capacity() << "\n";
     cout << str.rot13() << ", " << str.rot13().size() << ", " << str.rot13().capacity() << "\n";
-    cout << str.base64() << ", " << str.base64().size() << ", " << str.base64().capacity() << "\n";
+    cout << str.base64_encode() << ", " << str.base64_encode().size() << ", " << str.base64_encode().capacity() << "\n";
+    cout << str.base64_encode(true) << ", " << str.base64_encode(true).size() << ", " << str.base64_encode(true).capacity() << "\n";
     cout << str.substr(6, 3) << ", " << str.substr(6, 3).size() << ", " << str.substr(6, 3).capacity() << "\n";
-    */
+    
     /*
     out_str str("abc");
     cout << str << ", " << str.size() << ", " << str.capacity() << "\n";

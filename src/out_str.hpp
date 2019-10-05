@@ -37,6 +37,7 @@ class out_str {
 
     // operator
     char &operator[](const size_t);
+    const char &operator[](const size_t) const;
     out_str &operator=(const char *);
     out_str &operator=(const out_str &);
     out_str &operator=(const std::string &);

@@ -10,11 +10,16 @@ using std::cin;
 using outside_string::out_str;
 
 int main() {
-    out_str str;
+    const out_str str("abcd");
+    cout << str[0];
 
+    /*
+    out_str str;
     cin >> str;
     cout << str << ", siz:" << str.size() << ", cap:" << str.capacity() << "\n";
-    
+    str += 'a';
+    cout << str << ", siz:" << str.size() << ", cap:" << str.capacity() << "\n";
+    */
     /*
     std::string str("abcde");
     out_str ostr(str);

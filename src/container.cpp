@@ -73,6 +73,10 @@ char &out_str::operator[](const size_t n) {
     return m_data[n];
 }
 
+const char &out_str::operator[](const size_t n) const {
+    return data()[n];
+}
+
 out_str &out_str::operator=(const char *str) {
     m_size = std::strlen(str);
     if (m_capacity < m_size) {

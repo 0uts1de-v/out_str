@@ -15,10 +15,10 @@ out_str::out_str() {
     m_data[0] = '\0';
 }
 
-out_str::out_str(const size_t n, const char c) {
+out_str::out_str(const std::size_t n, const char c) {
     m_capacity = m_size = n;
     m_data = new char[n + 1];
-    for (size_t i = 0; i < n; ++i)
+    for (std::size_t i = 0; i < n; ++i)
         m_data[i] = c;
     m_data[n] = '\0';
 }
@@ -36,7 +36,7 @@ out_str::out_str(const out_str &str) {
     std::memcpy(m_data, str.data(), m_size + 1);
 }
 
-out_str::out_str(const out_str &str, size_t pos, size_t n) {
+out_str::out_str(const out_str &str, std::size_t pos, std::size_t n) {
     if (pos > str.size())
         throw std::out_of_range("out_str");
     auto xlen = std::min(n, str.size() - pos);
@@ -53,7 +53,7 @@ out_str::out_str(const std::string &str) {
     std::memcpy(m_data, str.data(), m_size + 1);
 }
 
-out_str::out_str(const std::string &str, size_t pos, size_t n) {
+out_str::out_str(const std::string &str, std::size_t pos, std::size_t n) {
     if (pos > str.size())
         throw std::out_of_range("out_str");
     auto xlen = std::min(n, str.size() - pos);
@@ -69,11 +69,11 @@ out_str::~out_str() {
 }
 
 // operator
-char &out_str::operator[](const size_t n) {
+char &out_str::operator[](const std::size_t n) {
     return m_data[n];
 }
 
-const char &out_str::operator[](const size_t n) const {
+const char &out_str::operator[](const std::size_t n) const {
     return data()[n];
 }
 
@@ -175,16 +175,16 @@ out_str &out_str::operator+=(const out_str &str) {
     return *this;
 }
 
-out_str out_str::operator*(size_t n) {
+out_str out_str::operator*(std::size_t n) {
     auto ret = *this;
-    for (size_t i = 1; i < n; ++i)
+    for (std::size_t i = 1; i < n; ++i)
         ret += data();
     return ret;
 }
 
-out_str &out_str::operator*=(size_t n) {
+out_str &out_str::operator*=(std::size_t n) {
     out_str tmp(*this);
-    for (size_t i = 1; i < n; ++i)
+    for (std::size_t i = 1; i < n; ++i)
         tmp += data();
     *this = tmp;
     return *this;
@@ -215,7 +215,7 @@ const char *out_str::data() const {
     return m_data;
 }
 
-void out_str::erase(size_t pos, size_t n) {
+void out_str::erase(std::size_t pos, std::size_t n) {
     if (pos > size())
         throw std::out_of_range("out_str");
     auto xlen = std::min(n, size() - pos);
@@ -227,7 +227,7 @@ void out_str::pop_back() {
     erase(size() - 1, 1);
 }
 
-out_str &out_str::append(size_t n, char c) {
+out_str &out_str::append(std::size_t n, char c) {
     out_str tmp(n, c);
     *this += tmp;
     return *this;
@@ -245,17 +245,17 @@ void out_str::shrink_to_fit() {
     std::memcpy(m_data, tmp.data(), size() + 1);
 }
 
-out_str out_str::substr(size_t pos, size_t n) const {
+out_str out_str::substr(std::size_t pos, std::size_t n) const {
     out_str ret(*this, pos, n);
     return ret;
 }
 
-out_str out_str::upper_case(size_t pos, size_t n) const {
+out_str out_str::upper_case(std::size_t pos, std::size_t n) const {
     if (pos > size())
         throw std::out_of_range("out_str");
     auto xlen = std::min(n, size() - pos);
     out_str ret(*this);
-    for (size_t i = 0; i < xlen; ++i) {
+    for (std::size_t i = 0; i < xlen; ++i) {
         if ('a' <= ret.data()[i + pos] && ret.data()[i + pos] <= 'z') {
             ret.m_data[i + pos] -= 32;
         }
@@ -263,12 +263,12 @@ out_str out_str::upper_case(size_t pos, size_t n) const {
     return ret;
 }
 
-out_str out_str::lower_case(size_t pos, size_t n) const {
+out_str out_str::lower_case(std::size_t pos, std::size_t n) const {
     if (pos > size())
         throw std::out_of_range("out_str");
     auto xlen = std::min(n, size() - pos);
     out_str ret(*this);
-    for (size_t i = 0; i < xlen; ++i) {
+    for (std::size_t i = 0; i < xlen; ++i) {
         if ('A' <= ret.data()[i + pos] && ret.data()[i + pos] <= 'Z') {
             ret.m_data[i + pos] += 32;
         }
@@ -276,12 +276,12 @@ out_str out_str::lower_case(size_t pos, size_t n) const {
     return ret;
 }
 
-out_str out_str::rot13(size_t pos, size_t n) const {
+out_str out_str::rot13(std::size_t pos, std::size_t n) const {
     if (pos > size())
         throw std::out_of_range("out_str");
     auto xlen = std::min(n, size() - pos);
     out_str ret(*this);
-    for (size_t i = 0; i < xlen; ++i) {
+    for (std::size_t i = 0; i < xlen; ++i) {
         if ('a' <= ret.data()[i + pos] && ret.data()[i + pos] <= 'z') {
             ret.m_data[i + pos] = (ret.data()[i + pos] - 'a' + 13) % 26 + 'a';
         }

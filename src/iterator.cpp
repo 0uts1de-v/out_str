@@ -10,7 +10,7 @@ out_str_iter::out_str_iter() {
     m_index = 0;
 }
 
-out_str_iter::out_str_iter(out_str *ostr, size_t index) {
+out_str_iter::out_str_iter(out_str *ostr, std::size_t index) {
     m_out_str = ostr;
     m_index = index;
 }
@@ -45,28 +45,28 @@ out_str_iter &out_str_iter::operator--(int) {
     return *this;
 }
 
-out_str_iter out_str_iter::operator+(size_t n) {
+out_str_iter out_str_iter::operator+(std::size_t n) {
     auto ret = *this;
     ret.m_index += n;
     return ret;
 }
 
-out_str_iter out_str_iter::operator-(size_t n) {
+out_str_iter out_str_iter::operator-(std::size_t n) {
     auto ret = *this;
     ret.m_index -= n;
     return ret;
 }
 
-ptrdiff_t out_str_iter::operator-(const out_str_iter &iterator) {
+std::ptrdiff_t out_str_iter::operator-(const out_str_iter &iterator) {
     return m_index - iterator.m_index;
 }
 
-out_str_iter &out_str_iter::operator+=(size_t n) {
+out_str_iter &out_str_iter::operator+=(std::size_t n) {
     m_index += n;
     return *this;
 }
 
-out_str_iter &out_str_iter::operator-=(size_t n) {
+out_str_iter &out_str_iter::operator-=(std::size_t n) {
     m_index -= n;
     return *this;
 }
